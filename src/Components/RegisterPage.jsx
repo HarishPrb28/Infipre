@@ -1,92 +1,92 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Components/RegisterPage.css";
 const RegisterPage = () => {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [country, setCountry] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [dates, setDates] = useState("");
+  const [inputValue, setInputValue] = useState({
+    name: "",
+    lastName: "",
+    country: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    dates: "",
+  });
 
   const history = useNavigate();
 
-  const handleRegister = () => {
-    localStorage.setItem(name, lastName, email, password, confirmPassword);
-    history.push("/SigninPage");
+  const [data, setData] = useState([]);
+  // console.log(inputValue);
+  const handleRegister = (e) => {
+    const { value, name } = e.target;
+    // console.log(value, name);
+
+    setInputValue(() => {
+      return { ...inputValue, [name]: value };
+    });
+  };
+
+  const addData = (e) => {
+    e.preventDefault();
+    // console.log(inputValue);
+    const { name, lastName, country, email, password, confirmPassword, dates } =
+      inputValue;
+    if (password != confirmPassword) {
+      alert("Password does not match");
+    } else {
+      localStorage.setItem(
+        "RegisteredUsers",
+        JSON.stringify([...data, inputValue])
+      );
+      history("/");
+    }
   };
   return (
     <div className="App">
       <h2>Register</h2>
+      <hr />
       <div className="registerForm">
         <label>
           {" "}
           Name:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <input type="text" name="name" onChange={handleRegister} />
         </label>
 
         <label>
           Last Name:
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
+          <input type="text" name="lastName" onChange={handleRegister} />
         </label>
 
         <label>
-          Country{" "}
-          <input
-            type="text"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-          />
+          Country <input type="text" name="country" onChange={handleRegister} />
         </label>
 
         <label>
-          Email:{" "}
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          Email: <input type="email" name="email" onChange={handleRegister} />
         </label>
 
         <label>
           Password:{" "}
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <input type="password" name="password" onChange={handleRegister} />
         </label>
 
         <label>
-          Password:
+          Confirm Password:
           <input
             type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </label>
-
-        <label>
-          Date of Birth
-          <input
-            type="date"
-            value={dates}
-            onChange={(e) => setDates(e.target.value)}
+            name="confirmPassword"
+            onChange={handleRegister}
           />
         </label>
 
         <br />
       </div>
-      <button onClick={handleRegister}>Register</button>
+      <div className="dob">
+        <input type="date" name="date" onChange={handleRegister} />
+      </div>
+
+      <button className="btn" onClick={addData}>
+        Register
+      </button>
     </div>
   );
 };

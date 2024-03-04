@@ -1,29 +1,40 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { IoMdExit } from "react-icons/io";
 
+import "./ContentPage.css";
 const ContentPage = () => {
   const history = useNavigate();
 
   const handleLogout = () => {
-    history.push("/SigninPage");
+    history("/");
   };
   return (
-    <div>
-      <h1>Content Page</h1>
+    <>
       <nav>
-        <h1>Brand Name</h1>
+        <h1 className="logoText">Brand Name</h1>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Products</li>
-          <li>Blog</li>
-          <li>Support</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/product">Product</Link>
+          </li>
+          <li>
+            <Link to="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link to="/support">Support</Link>
+          </li>
         </ul>
       </nav>
-      <div>
-        <button onClick={handleLogout}>Logout</button>
+      <div className="icon">
+        <IoMdExit onClick={handleLogout} />
       </div>
-    </div>
+    </>
   );
 };
 

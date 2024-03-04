@@ -1,49 +1,79 @@
 import React, { useState } from "react";
 import { FaHatCowboy } from "react-icons/fa";
-// import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Components/SigninPage.css";
 const SigninPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // const history = useNavigate();
+  const [inputValue, setInputValue] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleLogin = () => {
-    // if (!localStorage.getItem(email)) {
-    //   history.push("/RegisterPage");
-    // } else if (localStorage.getItem(email) === password) {
-    //   history.push("/ContentPage");
-    // }
+  const history = useNavigate();
+
+  const [data, setData] = useState([]);
+  // console.log(inputValue);
+  const handleLogin = (e) => {
+    const { value, name } = e.target;
+    // console.log(value, name);
+
+    setInputValue(() => {
+      return { ...inputValue, [name]: value };
+    });
+  };
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    // console.log(inputValue);
+    const getUser = localStorage.getItem("RegisteredUsers");
+    console.log(getUser);
+    const { email, password } = inputValue;
+    if (email === "") {
+      alert("email field is required");
+    } else if (password === "") {
+      alert("password field is required");
+    } else {
+      if (getUser && getUser.length) {
+        const userData = JSON.parse(getUser);
+        const userLogin = userData.filter((el, i) => {
+          return el.email === email && el.password === password;
+        });
+        if (userLogin.length === 0) {
+          alert("Invalid Details");
+        } else {
+          history("/ContentPage");
+          console.log("login successful");
+        }
+      }
+    }
+    // localStorage.setItem(
+    //   "RegisteredUsers",
+    //   JSON.stringify([...data, inputValue])
+    // );
   };
   return (
     <div className="signin">
       <div className="title-text">
         <h1>Lets get started now!</h1>
-        <p>or create an account if not registered yet</p>
+        <p>
+          or <Link to="/RegisterPage">create an account </Link> if not
+          registered yet
+        </p>
       </div>
       <div className="form-container">
         <div className="icon-section">
           <FaHatCowboy />
         </div>
-        <label htmlFor="email">
-          Email:{" "}
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <label>
+          Email: <input type="email" name="email" onChange={handleLogin} />
         </label>
 
         <label>
           {" "}
           Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <input type="password" name="password" onChange={handleLogin} />
         </label>
 
-        <button className="btn" onClick={handleLogin}>
+        <button className="btn" onClick={handleSignIn}>
           Sign in
         </button>
         <p className="paraText">Forget Password?</p>
