@@ -1,0 +1,57 @@
+.signin {
+  background-color: hsl(200.39deg 88.4% 56.3%);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+h1 {
+  padding: 0 !important;
+  margin: 0px !important;
+  color: #ffff;
+}
+
+.title-text {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.title-text p {
+  color: #ffff;
+}
+.form-container {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 35%;
+  margin: auto;
+  background: #fff;
+  padding: 40px;
+}
+
+.form-container label {
+  position: relative;
+  top: 0px;
+  left: -100px;
+  text-align: left;
+}
+
+input {
+  width: 75%;
+  height: 35px;
+}
+
+button.btn {
+  padding: 10px;
+  width: 100px;
+  background-color: steelblue;
+  border: none;
+  color: #fff;
+}
+
+p.paraText {
+  margin-top: 10px;
+}
