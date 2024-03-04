@@ -22,10 +22,7 @@ h1 {
 }
 .form-container {
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+
   width: 35%;
   margin: auto;
   background: #fff;
@@ -35,13 +32,14 @@ h1 {
 .form-container label {
   position: relative;
   top: 0px;
-  left: -100px;
+
   text-align: left;
 }
 
 input {
-  width: 75%;
+  width: 100%;
   height: 35px;
+  border: 1px solid #dfdcdc;
 }
 
 button.btn {
@@ -54,4 +52,34 @@ button.btn {
 
 p.paraText {
   margin-top: 10px;
+}
+
+label {
+  display: inline-grid;
+  width: 100%;
+  margin-bottom: 20px;
+  color: steelblue;
+}
+
+input[type="email"]:focus {
+  border: 2px solid steelblue;
+}
+
+.icon-section {
+  margin: auto;
+  width: 75px;
+  /* height: 200px; */
+  font-size: 32px;
+  color: steelblue;
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  /* border: 1px solid black; */
+  top: 22%;
+  transform: translate(-50%, 0);
+  left: 50%;
+  /* left: 0; */
+  /* right: 0; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
 }

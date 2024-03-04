@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaHatCowboy } from "react-icons/fa";
 // import { useNavigate } from "react-router-dom";
 import "../Components/SigninPage.css";
 const SigninPage = () => {
@@ -20,20 +21,28 @@ const SigninPage = () => {
         <p>or create an account if not registered yet</p>
       </div>
       <div className="form-container">
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <label> Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
+        <div className="icon-section">
+          <FaHatCowboy />
+        </div>
+        <label htmlFor="email">
+          Email:{" "}
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+
+        <label>
+          {" "}
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+
         <button className="btn" onClick={handleLogin}>
           Sign in
         </button>

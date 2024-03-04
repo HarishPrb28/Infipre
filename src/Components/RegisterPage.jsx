@@ -10,11 +10,11 @@ const RegisterPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [dates, setDates] = useState("");
 
-  // const history = useNavigate();
+  const history = useNavigate();
 
   const handleRegister = () => {
-    // localStorage.setItem(name, lastName, email, password, confirmPassword);
-    // history.push("/SigninPage");
+    localStorage.setItem(name, lastName, email, password, confirmPassword);
+    history.push("/SigninPage");
   };
   return (
     <div className="App">
