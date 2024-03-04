@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import ContentPage from "../ContentPage";
 
 function Product() {
   return (
-    <div>Product</div>
-  )
+    <>
+      <ContentPage />
+      <div>Product</div>
+    </>
+  );
 }
 
-export default Product
+export default Product;

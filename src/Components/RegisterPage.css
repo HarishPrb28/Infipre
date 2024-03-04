@@ -21,3 +21,26 @@ h2 {
   padding: 10px 0px;
   text-transform: uppercase;
 }
+
+.btn-danger {
+  width: 10vw;
+  background-color: #cd485c;
+  padding: 12px 30px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+  color: #fff;
+}
+
+p a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+p a:hover,
+p a:active {
+  text-decoration: underline;
+}

@@ -40,7 +40,7 @@ const SigninPage = () => {
         if (userLogin.length === 0) {
           alert("Invalid Details");
         } else {
-          history("/ContentPage");
+          history("/Home");
           console.log("login successful");
         }
       }
@@ -51,34 +51,38 @@ const SigninPage = () => {
     // );
   };
   return (
-    <div className="signin">
-      <div className="title-text">
-        <h1>Lets get started now!</h1>
-        <p>
-          or <Link to="/RegisterPage">create an account </Link> if not
-          registered yet
-        </p>
-      </div>
-      <div className="form-container">
-        <div className="icon-section">
-          <FaHatCowboy />
+    <>
+      <div className="signin">
+        <div className="signin-container">
+          <div className="title-text">
+            <h1>Lets get started now!</h1>
+            <p>
+              or <Link to="/RegisterPage">create an account </Link> if not
+              registered yet
+            </p>
+          </div>
+          <div className="form-container">
+            <div className="icon-section">
+              <FaHatCowboy />
+            </div>
+            <label>
+              Email: <input type="email" name="email" onChange={handleLogin} />
+            </label>
+
+            <label>
+              {" "}
+              Password:
+              <input type="password" name="password" onChange={handleLogin} />
+            </label>
+
+            <button className="btn" onClick={handleSignIn}>
+              Sign in
+            </button>
+            <p className="paraText">Forget Password?</p>
+          </div>
         </div>
-        <label>
-          Email: <input type="email" name="email" onChange={handleLogin} />
-        </label>
-
-        <label>
-          {" "}
-          Password:
-          <input type="password" name="password" onChange={handleLogin} />
-        </label>
-
-        <button className="btn" onClick={handleSignIn}>
-          Sign in
-        </button>
-        <p className="paraText">Forget Password?</p>
       </div>
-    </div>
+    </>
   );
 };
 

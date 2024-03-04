@@ -32,6 +32,8 @@ const RegisterPage = () => {
       inputValue;
     if (password != confirmPassword) {
       alert("Password does not match");
+    } else if (password === "") {
+      alert("password field is required");
     } else {
       localStorage.setItem(
         "RegisteredUsers",

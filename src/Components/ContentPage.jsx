@@ -12,10 +12,13 @@ const ContentPage = () => {
   return (
     <>
       <nav>
-        <h1 className="logoText">Brand Name</h1>
+        <h1 className="logoText">
+          {" "}
+          <Link to="/home">Brand Name</Link>
+        </h1>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li>
             <Link to="/about">About</Link>

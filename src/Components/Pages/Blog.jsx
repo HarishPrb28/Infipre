@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import ContentPage from "../ContentPage";
 
 function Blog() {
   return (
-    <div>Blog</div>
-  )
+    <>
+      <ContentPage />
+
+      <div>Blog</div>
+    </>
+  );
 }
 
-export default Blog
+export default Blog;

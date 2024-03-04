@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import ContentPage from "../ContentPage";
 
 function Support() {
   return (
-    <div>Support</div>
-  )
+    <>
+      <ContentPage />
+      <div>Support</div>
+    </>
+  );
 }
 
-export default Support
+export default Support;
