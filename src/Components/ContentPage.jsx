@@ -1,9 +1,10 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IoMdExit } from "react-icons/io";
 
 import "./ContentPage.css";
 const ContentPage = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const history = useNavigate();
 
   const handleLogout = () => {
@@ -12,28 +13,33 @@ const ContentPage = () => {
   return (
     <>
       <nav>
-        <h1 className="logoText">
-          {" "}
-          <Link to="/home">Brand Name</Link>
-        </h1>
-        <ul>
+        <Link to="/" className="title">
+          BrandName
+        </Link>
+        <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul className={menuOpen ? "open" : ""}>
           <li>
-            <Link to="/home">Home</Link>
+            <NavLink to="/home">Home</NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink to="/about">About</NavLink>
           </li>
           <li>
-            <Link to="/product">Product</Link>
+            <NavLink to="/product">Product</NavLink>
           </li>
           <li>
-            <Link to="/blog">Blog</Link>
+            <NavLink to="/blog">Blog</NavLink>
           </li>
           <li>
-            <Link to="/support">Support</Link>
+            <NavLink to="/support">Support</NavLink>
           </li>
         </ul>
       </nav>
+
       <div className="icon">
         <IoMdExit onClick={handleLogout} />
       </div>
